@@ -47,14 +47,15 @@ app.post('/api/notes', (req, res) => {
   var noteNote = req.body;
   noteNote.id = uuidGen(); //ID to equal the position in array // adding ID to each note
   console.log(req.body) 
-   
-  fs.appendFile('.db/db.json', `${req.body}`, (err) =>
-  // TODO: Describe how this ternary operator works
-  err ? console.error(err) : console.log('Commit logged!')
-  ) //work out how to append an object into an array on db json
+
+  fs.readFile('./db/db.json', (err, cb) => {
+    var dataCurrent = JSON.parse(cb);
+    dataCurrent.push(noteNote);
+    fs.writeFile('./db/db.json', `${JSON.stringify(dataCurrent, null, 4)}`, (err) =>
+    err ? console.error(err) : console.log('Commit logged!')
+  )})
+  
 });
-
-
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
