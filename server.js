@@ -9,20 +9,9 @@ const app = express();
 const crypto = require('crypto');
 
 uuidGen = function generateUUID() {
-  const array = crypto.randomBytes(16);
-  
-  // Set version (4) and variant (10b) bits
-  array[6] = (array[6] & 0x0f) | 0x40;
-  array[8] = (array[8] & 0x3f) | 0x80;
-  
-  let uuid = '';
-  for (let i = 0; i < array.length; i++) {
-    const octet = array[i].toString(16).padStart(2, '0');
-    uuid += (i === 4 || i === 6 || i === 8 || i === 10) ? `-${octet}` : octet;
-  }
+  const uuid = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
   return uuid;
 }
-
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
