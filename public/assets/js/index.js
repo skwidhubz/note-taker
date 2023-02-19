@@ -1,3 +1,4 @@
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -116,7 +117,7 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-// Render the list of note titles
+// Render the list of note titles (from the json db??)
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
@@ -182,4 +183,7 @@ if (window.location.pathname === '/notes') {
 
 getAndRenderNotes();
 
+
+// render notes db to side bar
+// UL class name "list-group"
 
