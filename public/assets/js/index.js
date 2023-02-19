@@ -1,4 +1,3 @@
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -27,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () => //populate notes.
-  fetch('/api/notes', {
+  fetch('/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

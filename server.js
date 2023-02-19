@@ -47,7 +47,7 @@ app.post('/api/notes', (req, res) => {
 });
 
 // GET notes db listed on page.
-app.get('./db/db.json', (req, res) => {
+app.get('/api/notes', (req, res) => {
   res.sendFile('./db/db.json'),
   console.log('database sent')
 })
