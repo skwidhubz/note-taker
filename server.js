@@ -46,6 +46,12 @@ app.post('/api/notes', (req, res) => {
   
 });
 
+// GET notes db listed on page.
+app.get('./db/db.json', (req, res) => {
+  res.sendFile('./db/db.json'),
+  console.log('database sent')
+})
+
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
